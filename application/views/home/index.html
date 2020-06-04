@@ -1,0 +1,620 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="<?= img_url('favicon.ico') ?>">
+	<link rel="shortcut icon" href="<?= img_url('wallamre.png') ?>">
+	<link rel="stylesheet" href="<?= css_url('style') ?>">
+	<link rel="stylesheet" href="<?= css_url('slider') ?>">
+    <link rel="stylesheet" href="<?= css_url('sweetalert') ?>">
+
+    <link rel="stylesheet" href="<?= css_url('w3') ?>">
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="https://swish.swi-prolog.org/pengine/pengines.js"></script>
+	<!--script src="js/connexionDB.js"></script type="text/javascript"-->
+
+    <script type="text/javascript" src="<?= js_url('ammap') ?>"></script>
+    <!--script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <!--script type="text/javascript" src="<?= js_url('sweetalert') ?>"></script-->
+    <script type="text/javascript" src="<?= assets_url('themes/light.js') ?>"></script>
+    <script type="text/javascript" src="<?= assets_url('maps/js/cameroonLow.js') ?>"></script>
+	
+    <title>Agriculture</title>
+    <style>
+        #periode, #region, #sol, #qualite, #eclairage, #ombrage, #pente, #vent, #eau {
+            display: none;
+        }
+    </style>
+</head>
+<body class="page1 w3-white" >
+
+<header>
+    <div class="container_12">
+        <div class="grid_12">
+            <div class="h_phone">
+
+                <!-- Besoin d'aide? Contactez nous au xxxxxxxxxxxxxxxx -->
+            </div>
+            <h1><a href=">?= base_url() ?>"><img src="<?= img_url('path4698.png') ?>" alt=""></a></h1>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="menu_block">
+        <div class="container_12">
+            <div class="grid_12">
+                <div class="socials"><a href="#"></a><a href="#"></a></div>
+
+                <nav class="">
+                    <ul class="sf-menu">
+                        <li class="current"><a href="http://wallamre.msacad.com">Home</a></li>
+                        <!--li class="with_ul"><a href="#">A propos</a></li>
+                        <li><a href="#">Services</a>
+
+                        </li>
+                        <li><a href="#">Produits</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacts</a></li-->
+                    </ul>
+                </nav>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+</header>
+
+<div class="w3-center  " style="background-color: rgb(84,33,0);" id="firstDiv">
+    <br>
+ <h3 id="message" style="font:  50px 'Open Sans Condensed'" class="w3-text-white">Determine your optimal crop</h3><br>
+		<Label class="w3-label" id="regionLabel" style="font:  30px 'Open Sans Condensed'"></Label>
+		<Label class="w3-label" id="alert" style="font:  20px 'Open Sans Condensed'"></Label>
+		<h2 class="w3-label" id="culture" style="font:  30px 'Open Sans Condensed'"></h2>
+		<label class="w3-label" id="optimiser" style="font:  30px 'Open Sans Condensed'"></label>
+	<div class="w3-row ">
+       <div class="w3-col m4 w3-text-white">
+          <h3 style="color: rgb(84,33,0);">j</h3>
+       </div>
+       <div class="w3-col m4">
+         <select class="w3-select w3-border" id="region" onclick="Select()">
+           <option selected disabled value="11">Select region</option>
+           <option value ="1">Adamawa </option >
+           <option value ="2">Centre </option >
+           <option value ="3">East</option >
+           <option value ="4">Far North</option >
+           <option value ="5">Littoral</option >
+           <option value ="6">North </option >
+           <option value ="7">North West</option >
+           <option value ="8">West</option >
+           <option value ="9">South</option >
+           <option value ="10">South West</option >
+         </select>
+      
+          <select class="w3-select w3-border" id="periode" onclick="Select()">
+            <option selected disabled value="13">Select period</option>
+            <option value ="1">January </option >
+            <option value ="2">February </option >
+            <option value ="3">March</option >
+            <option value ="4">April</option >
+            <option value ="5">May</option >
+            <option value ="6">June </option >
+            <option value ="7">July</option >
+            <option value ="8">August</option >
+            <option value ="9">September</option >
+            <option value ="10">October</option >
+            <option value ="11">November</option >
+            <option value ="12">December</option >
+          </select>
+        
+          <select class="w3-select w3-border" id="sol" onclick="Select()">
+            <option selected disabled value="7">Select soil type</option>
+            <option value ="1">Clayey</option >
+            <option value ="2">Limestone</option >
+            <option value ="3">Humifaire</option >
+            <option value ="4">Slimy</option >
+            <option value ="5">Sandy</option >
+            <option value ="6">Sandy clay</option >
+          </select>
+		  
+		  <select class="w3-select w3-border" id="qualite" onclick="Select()">
+            <option selected disabled value="4">Select soil quality</option>
+            <option value ="1">Black</option >
+            <option value ="2">Light</option >
+            <option value ="3">Rich in organic matter</option >
+		   </select>
+		   
+		   <select class="w3-select w3-border" id="eau" onclick="Select()">
+            <option selected disabled value="5">Select water quantity</option>
+            <option value ="1">Very little</option >
+            <option value ="2">Little</option >
+            <option value ="3">Suffissament</option >
+            <option value ="4">Very much</option >
+		   </select>
+		   
+		   <select class="w3-select w3-border" id="eclairage" onclick="Select()">
+            <option selected disabled value="4">Select the lighting moment</option>
+            <option value ="1">Never</option >
+            <option value ="2">Some hours of the day</option >
+            <option value ="3">All day</option >
+		   </select>
+		   
+		   <select class="w3-select w3-border" id="ombrage" onclick="Select()">
+            <option selected disabled value="4">Select the shading moment</option>
+            <option value ="1">Never</option >
+            <option value ="2">Some hours of the day</option >
+            <option value ="3">All day</option >
+		   </select>
+		   
+		   <select class="w3-select w3-border" id="vent" onclick="Select()">
+            <option selected disabled value="4">Select the wind level</option>
+            <option value ="1">Low</option >
+            <option value ="2">Average</option >
+            <option value ="3">High</option >
+		   </select>
+		   
+		   <select class="w3-select w3-border" id="pente" onclick="Select()">
+            <option selected disabled value="5">Select the slope level</option>
+            <option value ="1">Flat</option >
+            <option value ="2">Low</option >
+            <option value ="3">Average</option >
+            <option value ="4">High</option >
+		   </select>
+		  <div class="w3-col m4 w3-text-white">
+			<h3 style="color: rgb(84,33,0);">j</h3>
+		  </div>
+       </div>
+	   <div class="w3-col m4">
+
+        </div>
+	   </div>
+	   <div class="w3-center" id="divButtonValidate">
+	   		<button class="btn w3-center"  id="valider">Validate</button>
+	   </div>
+</div>
+<div class="w3-center " style="background-color: rgb(84,33,0);">
+	<div id="messager" style="color: rgb(84,33,0);">j</div><br>
+</div>
+<script type="text/x-prolog">
+:- include(wallamres).
+</script>
+
+<script>
+    $('#valider').click(function(){
+       swal({
+              title: "Error!",
+              text: "Here's my error message!",
+              type: "error",
+              confirmButtonText: "Cool"
+            });
+       alert('Plese');
+    });
+</script>
+
+<script>
+	var pengine = new Pengine({
+				application: "swish",
+				//format: "JSON",
+				chunk: 1000,
+				server: "https://swish.swi-prolog.org/pengine",
+                ask: "identify",
+                onoutput: handleOutput,
+                onabort: handleAbort
+            });
+			
+			var culture = ["Chou","Carotte","Ananas","Plantain"];
+			var pourcentage = [82,72,63,59];
+			var pourcentages = [];
+			var cultures = [];
+            var mot="", valCulture="";
+			var j=0, k=0, pourcent=0,cult= 0,q=0;
+			var p="";
+            localStorage.clear();
+
+           /*for(var i =0; i< 2*pourcentage.length; i++){
+               if(i % 2 ===0) {
+                   $("#culture").append("<h2 class='colonne1'>" + culture[k] + "</br></h2>");
+                   storeData(i, culture[k]);
+                   cult++;
+                   k++;
+               }else {
+                   $("#culture").append("<h2 class='colonne2'>" + pourcentage[q] + "%</h2></br>")
+                   q++;
+                   storeData(i, pourcentage[q]);
+                   pourcent++;
+               }
+                var idButton = document.getElementById('valider');
+                idButton.style.display='none';
+                $("#optimiser").html("<a href='<?= site_url('resultat') ?>' class='optimiser'>Cliquez ici</a> <h1>Pour connaitre la culture optimale<h1>");
+           }*/
+            function handleOutput() {
+                mot=this.data.toString();
+				$("#messagess").append("<h3>"+mot.length+" " + JSON.stringify(this.data)+ "</h3>");
+				//document.getElementById("valider").disabled = true;
+				for(var i=0; i<this.data.length; i++){
+                    //mot=this.data;
+					//$("#regionLabel").html("<h1>" + this.data+ "</h1>");
+                }
+				if((mot!="region")&&(mot!='periode')&&(mot!='sol')&&(mot!='qualite')&&(mot!='eau')&&(mot!='eclairage')&&(mot!='ombrage')&&(mot!='pente')&&(mot!='vent')&&(mot!='altitude')){
+
+				}
+				//$("#message").html("<h3>" + mot+ "</h3>");
+                if(mot=="region"){
+                   // swal('Congratulations!', 'Your message has been successfully sent', 'success');
+                    var ids = document.getElementById('region');
+                    ids.style.display='block';
+					$("#regionLabel").html("<h1>In which region is your space?</h1>");
+					$("#valider").hide();
+                }
+                else if(mot=='periode'){
+                    var ids = document.getElementById('periode');
+                    ids.style.display='block';
+					$("#regionLabel").html("<h1>In which month do you want to plant or sow?</h1>");
+					$("#valider").hide();
+                }
+                else if(mot=='sol'){
+                    var ids = document.getElementById('sol');
+                    ids.style.display='block';
+					$("#regionLabel").html("<h1>What type of soil is it?</h1>");
+					$("#valider").hide();
+                }
+				else if(mot=='qualite'){
+                    var ids = document.getElementById('qualite');
+                    ids.style.display='block';
+					$("#regionLabel").html("<h1>What is the quality of the soil?</h1>");
+					$("#valider").hide();
+                }
+				else if(mot=='eau'){
+                    var ids = document.getElementById('eau');
+                    ids.style.display='block';
+					$("#regionLabel").html("<h1>What is the presence of water?</h1>");
+					$("#valider").hide();
+                }
+				else if(mot=='eclairage'){
+                    var ids = document.getElementById('eclairage');
+                    ids.style.display='block';
+					$("#regionLabel").html("<h1>At what time of the day is your floor lit up?</h1>");
+					$("#valider").hide();
+                }
+				else if(mot=='ombrage'){
+                    var ids = document.getElementById('ombrage');
+                    ids.style.display='block';
+                    $("#regionLabel").html("<h1>At what time of day is there shade?</h1>");
+                    $("#valider").hide();
+                }
+                else if(mot=='altitude'){
+                    var ids = document.getElementById('altitude');
+                    ids.style.display='block';
+                    $("#regionLabel").html("<h1>What is the altitude of your land?</h1>");
+                    $("#valider").hide();
+                }
+				else if(mot=='vent'){
+					var ids = document.getElementById('vent');
+					ids.style.display='block';
+					$("#regionLabel").html("<h1>What is the power of the wind that crosses your land?</h1>");
+					$("#valider").hide();
+				}
+				else if(mot=='pente'){
+					var ids = document.getElementById('pente');
+					ids.style.display='block';
+					$("#regionLabel").html("<h1>How is the slope of your land?</h1>");
+					$("#valider").hide();
+				}
+				else{
+                    $("#message").html("The appropriate crop(s) with their success percentage is (are):");
+                    $("#regionLabel").html("");
+                    //alert('qqqqq');
+                    culture[k]=this.data;
+                    /*if(culture[k]==="cul"){
+                        k=0;
+                    }
+                    else{*/
+                    if(k % 2 ===0){
+                        $("#culture").append("<h2 class='colonne1'>"+culture[k]+ "</br></h2>");
+                        valCulture = culture[k];
+                        //cultures[cult] = culture[k];
+                        //cult++;
+                        storeData(k, culture[k]);
+                    }
+                    else{
+                        $("#culture").append("<h2 class='colonne2'>"+culture[k].toFixed(2)+ "%</h2></br>");
+                        storeData(k, culture[k]);
+                    }
+                    k++;
+                    pourcent++;
+                    var idButton = document.getElementById('valider');
+                    idButton.style.display='none';
+                    $("#optimiser").html("<a href='<?= site_url('resultat') ?>' class='optimiser'>Click here</a> <h1 style='font:  30px 'Open Sans Condensed'' class='w3-text-white'>To know optimal crop</h1>");
+                    //}
+                }
+            }
+            function handleAbort() {
+                $("#err").html("<h4>Aborted</h4>");
+            }
+
+			
+            function selectValue(){
+
+                if(mot=='periode'){
+                    var val = document.getElementById('periode');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+                else if(mot=='region'){
+                    var val = document.getElementById('region');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+                else if(mot=='sol'){
+                    var val = document.getElementById('sol');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+				 else if(mot=='qualite'){
+                    var val = document.getElementById('qualite');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+				else if(mot=='eau'){
+                    var val = document.getElementById('eau');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+				else if(mot=='eclairage'){
+                    var val = document.getElementById('eclairage');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+
+                }
+				else if(mot=='ombrage'){
+                    var val = document.getElementById('ombrage');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+                else if(mot=='altitude'){
+                    var val = document.getElementById('altitude');
+                    var valeur = val.options[val.selectedIndex].value;
+                    mot="";
+                    pengine.respond(valeur);
+                    val.style.display='none';
+                }
+				else if(mot=='vent'){
+					var val = document.getElementById('vent');
+					var valeur = val.options[val.selectedIndex].value;
+					mot="";
+					pengine.respond(valeur);
+					val.style.display='none';
+				}
+				else if(mot=='pente'){
+					var val = document.getElementById('pente');
+					var valeur = val.options[val.selectedIndex].value;
+					mot="";
+					pengine.respond(valeur);
+					val.style.display='none';
+				}
+            }
+
+            /*$(document).ready(function(){
+			    $('#region').on('click', function() {
+				if(document.getElementById('region').options[document.getElementById('region').selectedIndex].value != 11){
+					$("#valider").show();
+				}
+            });*/
+
+   			function Select(){
+   				if(mot=='region'){
+	   				if(document.getElementById('region').options[document.getElementById('region').selectedIndex].value != 11){
+						$("#valider").show();
+					}
+				}
+				if(mot=='periode'){
+					if(document.getElementById('periode').options[document.getElementById('periode').selectedIndex].value != 13){
+						$("#valider").show();
+					}
+				}
+				if(mot=='sol'){
+					if(document.getElementById('sol').options[document.getElementById('sol').selectedIndex].value != 7){
+						$("#valider").show();
+					}
+				}
+				if(mot=='qualite'){
+					if(document.getElementById('qualite').options[document.getElementById('qualite').selectedIndex].value != 4){
+						$("#valider").show();
+					}
+				}
+				if(mot=='eau'){
+					if(document.getElementById('eau').options[document.getElementById('eau').selectedIndex].value != 5){
+					$("#valider").show();
+					}
+				}
+				if(mot=='eclairage'){
+					if(document.getElementById('eclairage').options[document.getElementById('eclairage').selectedIndex].value != 4){
+					$("#valider").show();
+					}
+				}
+				if(mot=='ombrage'){
+					if(document.getElementById('ombrage').options[document.getElementById('ombrage').selectedIndex].value != 4){
+					$("#valider").show();
+					}
+				}
+				if(mot=='vent'){
+					if(document.getElementById('vent').options[document.getElementById('vent').selectedIndex].value != 4){
+					$("#valider").show();
+					}
+				}
+				if(mot=='pente'){
+					if(document.getElementById('pente').options[document.getElementById('pente').selectedIndex].value != 5){
+					$("#valider").show();
+					}
+				}
+   			}
+
+    		function testSelect(){
+    			//alert(document.getElementById('region').options[document.getElementById('region').selectedIndex].value);
+            	if(document.getElementById('region').options[document.getElementById('region').selectedIndex].value == 11){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('periode').options[document.getElementById('periode').selectedIndex].value == 13){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('sol').options[document.getElementById('sol').selectedIndex].value == 7){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('qualite').options[document.getElementById('qualite').selectedIndex].value == 4){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('eau').options[document.getElementById('eau').selectedIndex].value == 5){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('eclairage').options[document.getElementById('eclairage').selectedIndex].value == 4){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('ombrage').options[document.getElementById('ombrage').selectedIndex].value == 4){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('vent').options[document.getElementById('vent').selectedIndex].value == 4){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+				if(document.getElementById('pente').options[document.getElementById('pente').selectedIndex].value == 7){
+					$("#valider").hide();
+				}else{
+					selectValue();
+				}
+            }
+	function storeData(culture,pourcentage){
+		//localStorage.clear();
+		
+		/*var superficie = document.getElementById('equipement28').value;
+		var mo = document.getElementById('mo').value;
+		var budget = document.getElementById('budget').value;*/
+		
+		//localStorage.setItem(k, culture);
+        localStorage.setItem(culture, pourcentage);
+	}
+    $(function(){
+        $('#optimiser').click(function(){
+            $(this,'#culture').hide();
+            var ids = document.getElementById('culture');
+            ids.style.display='none';
+            var id = document.getElementById('message');
+            id.style.display='none';
+            var i = document.getElementById('regionLabel');
+            i.style.display='none';
+            $("#optimiserForm1").slideDown();
+            $('.carousel').carousel();
+        });
+        $('.btnsuivant').click(function(){
+
+            var id = $(this).attr('id')
+
+            if(id != '3') {
+               /* if(id==1){
+                    var superficie = document.getElementById('superficie');
+                    if(superficie.value.toString==""){
+                        alert('Veillez entrez la superificie');
+                    }else{
+                        var next = parseInt(id) + 1;
+
+                        $('#optimiserForm' + id).hide();
+                        $('#optimiserForm' + next).slideDown();
+                    }
+                }else{*/
+                    var next = parseInt(id) + 1;
+
+                    $('#optimiserForm' + id).hide();
+                    $('#optimiserForm' + next).slideDown();
+               // }
+            }else{
+                alert("fini");
+				if(!localStorage){
+					alert('impossible');
+				}
+				else{
+					alert("possible");
+				}
+				
+				storeData();
+				var le = localStorage.getItem("superficie");
+				alert(le);
+				$("#message").html("<h1>"+le+"</h1>")
+            }
+
+        });
+        $('.btnprecedent').click(function(){
+            var id = $(this).attr('id');
+            var next = parseInt(id)-1;
+            $('#optimiserForm'+id).hide();
+            $('#optimiserForm'+next).show();
+
+        });
+        var q=0;
+        $('#semences').click(function(){
+            //$("#semences").html("<h1>"+culture.length+"</h1>");
+            while(q<culture.length){
+                var nomCulture = document.getElementById('nomCulture');
+                var labelQuantite = document.getElementById('labelQuantie');
+                var quantiteSem = document.getElementById('quantiteSem');
+
+                var nom = document.createElement('label');
+                //nom.innerHTML = culture[q];
+                nom.id = q;
+                nom.class = "w3-label";
+                nom.appendChild(document.createTextNode(culture[q]));
+
+                var labels = document.createElement('label');
+
+                labels.innerHTML = "Quantité(kg|pieds) :";
+
+                var quantite = document.createElement('input');
+                quantite.type="number";
+                quantite.value = "0";
+                //quantite.id = i;
+                $('#nom').append("<div class='w3-row w3-center'> <div class='w3-col m2 w3-margin-top'><label class='w3-label'>"+culture[q]+"</label>" +
+                        "</div><div class='w3-col m3 w3-margin-top'><label class='w3-label w3-margin-top'>Quantité(kg|pieds):</label></div>" +
+                        "<div class='w3-col m3 w3-margin-top'><input type='number'min='0' value='0' id=quantite"+q+"></div></div>");
+                //$('#nom').append(" <div class='w3-col m4 w3-margin-top'><label class='w3-label w3-margin-top'>Quantité(kg|pieds) :</label></div>");
+                //$('#nom').append(" <div class='w3-col m4 w3-margin-top'><input type='number'></div>");
+                //nomCulture.appendChild(nom);
+                //labelQuantite.appendChild(labels);
+                //$("#semences").append("<h1>"+culture[q]+"</h1>");
+                //quantiteSem.appendChild(quantite);
+                q+=2;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
